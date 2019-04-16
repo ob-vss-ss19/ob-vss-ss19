@@ -15,7 +15,7 @@ type MyActor struct{}
 func (state *MyActor) Receive(context actor.Context) {
 	switch context.Message().(type) {
 	case *echomessages.Echo:
-		context.Send(context.Sender(), &echomessages.Response{
+		context.Respond(&echomessages.Response{
 			SomeValue: "result",
 		})
 	default: // just for linter
